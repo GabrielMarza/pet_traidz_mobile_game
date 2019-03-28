@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+	xmlns:gap   = "http://phonegap.com/ns/1.0"
+	id          = "com.phonegap.example"
+	versionCode = "10"
+	version     = "1.0.0" >
+
+	<!-- versionCode is optional and mainly for Android only -->
+	<platform name="ios" />
+	<!-- <platform name="android" /> -->
+	<!-- <platform name="winphone" /> -->
+
+	<name>Pet Traidz</name>
+
+	<description>
+		A super fun game to take care of and share your vritual pet with your friends!
+	</description>
+
+	<author href="http://gabrielmarza.com/" email="gabrielmarza7@gmail.com">
+		Gabriel Marza
+	</author>
+</widget>
