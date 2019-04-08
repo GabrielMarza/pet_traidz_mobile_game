@@ -16,8 +16,8 @@ var app = function(app) {  // module pattern
 					width:70,
 					height:70,
 					corner:35,
-					backgroundColor:purple,
-					rollBackgroundColor:pink,
+					backgroundColor:blue,
+					rollBackgroundColor:orange,
 					label:"",
 					shadowBlur:-1
 				}
@@ -26,63 +26,132 @@ var app = function(app) {  // module pattern
 
 		const manager = v.manager = new Manager();
 
-		// 1st page...
-		const page1 = v.page1 = new Container(stageW, stageH).addTo();
-		let header = new Container().addTo(page1);
-		v.page1.logo = new Label(m.title).addTo(header);
-		let content = new Container(300, 300).addTo(page1);
-		v.dial = new Dial().center(content);
-		v.dial.currentValue = m.data[0];
+		// Intro page...
+		const pageIntro = v.pageIntro = new Container(stageW, stageH).addTo();
+		let header = new Container().addTo(pageIntro);
+		v.pageIntro.logo = new Label(m.title).addTo(header);
 
-		let footer = v.page1.tabs = new Tabs({
+		let content = new Container(300, 300).addTo(pageIntro);
+		// v.dial = new Dial().center(content);
+		// v.dial.currentValue = m.data[0];
+
+		v.petSelector = new Window({height:300, interactive:false, padding:0, slideDamp:.2}).center(content);
+		v.petSelector.currentValue = m.data[0];
+
+		let footer = v.pageIntro.tabs = new Tabs({
 			tabs:[
 				new Button({
-					icon: pizzazz.makeIcon("home", "white").alp(.7),
-					rollIcon: pizzazz.makeIcon("home", "black")
+					label:"Choose Your Pet",
+					width:350,
+					borderColor: white,
+					shadowBlur: 25,
+					borderWidth: 2
 				}),
 				new Button({
-					icon: pizzazz.makeIcon("settings", "white").alp(.7),
-					rollIcon: pizzazz.makeIcon("settings", "black")
-				})]
-			}).addTo(page1);
-			// footer.buttons[0].setIcon("icon", pizzazz.makeIcon("settings", "white"))
+					label:"About the Game",
+					width:350,
+					borderColor: white,
+					shadowBlur: 25,
+					borderWidth: 2
+				})
+			],
+			vertical:true
+		}).addTo(pageIntro);
+		// footer.buttons[0].setIcon("icon", pizzazz.makeIcon("settings", "white"))
 
-			manager.add(
-				new Layout(page1, [
-					{object:header, maxWidth:90, marginTop:2},
-					{object:content, marginTop:2, backgroundColor:green},
-					{object:footer, maxWidth:90, marginTop:2}
-				], 2, yellow, true, null, stage
-			));
+		// Intro layout manager...
+		manager.add(
+			new Layout(pageIntro, [
+				{object:header, maxHeight:90, marginTop:2},
+				{object:content, marginTop:2, backgroundColor:green},
+				{object:footer, maxWidth:90, marginTop:2}
+			], 2, yellow, true, null, stage)
+		);
 
-			// 2nd page...
-			const page2 = v.page2 = new Container(stageW, stageH).addTo();
-			header = new Container().addTo(page2);
-			v.page1.logo = new Label(m.title).addTo(header);
-			content = new Container(300, 300).addTo(page2);
-			v.slider = new Slider().sca(1.5).center(content);
-			v.slider.currentValue = m.data[1];
+		// Choosing a pet page...
+		const pageChoosePet = v.pageChoosePet = new Container(stageW, stageH).addTo();
+		header = new Container().addTo(pageChoosePet);
+		v.pageChoosePet.logo = new Label("Choose Your Pet").addTo(header);
 
-			footer = v.page2.tabs = v.page1.tabs.clone().addTo(page2);
+		content = new Container(300, 300).addTo(pageChoosePet);
 
-			// layout manager...
-			manager.add(
-				new Layout(page2, [
-					{object:header, maxWidth:90, marginTop:5},
-					{object:content, marginTop:2, backgroundColor:blue},
-					{object:footer, maxWidth:90, marginTop:2}
-				], 2, orange, true, null, stage
-			));
+		footer = v.pageChoosePet.tabs = new Tabs({
+			tabs:[
+				new Button({
+					label:"Start Laughing",
+					width:350,
+					borderColor: white,
+					shadowBlur: 25,
+					borderWidth: 2
+				}),
+				new Button({
+					label:"Back to Main Menu",
+					width:350,
+					borderColor: white,
+					shadowBlur: 25,
+					borderWidth: 2
+				})
+			],
+			vertical:true
+		}).addTo(pageChoosePet);
 
-			// Swiper...
-			manager.add(
-				v.pages = new Pages([
-					{page:page1, swipe:[null, null, page2, page2]},
-					{page:page2, swipe:[null, null, page1, page1]}
-				], "slide", 500).addTo()
-			);
+		// Choosing a pet layout manager...
+		manager.add(
+			new Layout(pageChoosePet, [
+				{object:header, maxWidth:90, marginTop:5},
+				{object:content, marginTop:2, backgroundColor:blue},
+				{object:footer, maxWidth:90, marginTop:2}
+			], 2, orange, true, null, stage)
+		);
 
-			return v;
-		}
-		return app; // module pattern
-	}(app||{}); // module pattern
+		// About the game page...
+		const aboutTheGame = v.aboutTheGame = new Container(stageW, stageH).addTo();
+		header = new Container().addTo(aboutTheGame);
+		v.aboutTheGame.logo = new Label("About the Game").addTo(header);
+
+		content = new Container(300, 300).addTo(aboutTheGame);
+
+		footer = v.aboutTheGame.tabs = new Tabs({
+			tabs:[
+				new Button({
+					label:"Choose Your Pet",
+					width:350,
+					borderColor: white,
+					shadowBlur: 25,
+					borderWidth: 2
+				}),
+				new Button({
+					label:"Back to Main Menu",
+					width:350,
+					borderColor: white,
+					shadowBlur: 25,
+					borderWidth: 2
+				})
+			],
+			vertical:true
+		}).addTo(aboutTheGame);
+
+		// About the game layout manager...
+		manager.add(
+			new Layout(aboutTheGame, [
+				{object:header, maxWidth:90, marginTop:5},
+				{object:content, marginTop:2, backgroundColor:red},
+				{object:footer, maxWidth:90, marginTop:2}
+			], 2, green, true, null, stage
+		)
+	);
+
+	// Swiper...
+	manager.add(
+		v.pages = new Pages([
+			{page:pageIntro, swipe:[null, null, pageChoosePet, pageChoosePet]},
+			{page:pageIntro, swipe:[null, null, aboutTheGame, aboutTheGame]},
+			{page:aboutTheGame, swipe:[null, null, pageChoosePet, pageChoosePet]},
+			{page:aboutTheGame, swipe:[null, null, pageIntro, pageIntro]}
+		], "slide", 500).addTo()
+	);
+
+	return v;
+}
+return app; // module pattern
+}(app||{}); // module pattern

@@ -28,7 +28,7 @@ var app = function(app) { // module pattern
 			localStorage.exampleData = JSON.stringify(m.data);
 		};
 
-		m.title = "Mobile App Model";
+		m.title = "Pet LaughZ";
 
 		// We need the "m" outside the function scope, so we return "m".
 		return m;
