@@ -61,6 +61,24 @@ var app = function (app) {
 				page:v.pageChoosePet,
 				// rect:[0, 0, 100, 100],
 				rect:v.pageChoosePet.tabs.buttons[0],
+				call: function () {v.pages.go(v.petScreen, "right");}
+			},
+			{ // pageChoosePet tabs.
+				page:v.pageChoosePet,
+				// rect:[0, 0, 100, 100],
+				rect:v.pageChoosePet.tabs.buttons[1],
+				call: function () {v.pages.go(v.pageIntro, "left");}
+			},
+			{ // pageChoosePet logo.
+				page:v.pageChoosePet,
+				// rect:[0, 0, 100, 100],
+				rect:v.pageChoosePet.logo,
+				call: function () {zog("clicking on hotspot for pageChoosePet.")}
+			},
+			{ // petScreen tabs.
+				page:v.petScreen,
+				// rect:[0, 0, 100, 100],
+				rect:v.petScreen.tabs.buttons[0],
 				call: function () {v.pages.go(v.pageIntro, "left");}
 			}
 		]);
