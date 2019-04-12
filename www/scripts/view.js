@@ -66,7 +66,7 @@ var app = function(app) {  // module pattern
 		manager.add(
 			new Layout(pageIntro, [
 				{object:header, maxHeight:90, marginTop:2},
-				{object:content, marginTop:2, backgroundColor:blue},
+				{object:content, maxHeight:10, marginTop:2, backgroundColor:blue},
 				{object:footer, maxWidth:90, marginTop:2}
 			], 2, yellow, true, null, stage)
 		);
@@ -149,13 +149,14 @@ var app = function(app) {  // module pattern
 		const petScreen = v.petScreen = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(petScreen);
 		v.petScreen.logo = frame.asset("petlaughzlogo.png").addTo(header);
+		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
 
 		content = new Container(300, 300).addTo(petScreen);
 
 		footer = v.petScreen.tabs = new Tabs({
 			tabs:[
 				new Button({
-					label:"Back to Home Screen",
+					label:"Back to Home",
 					width:350,
 					borderColor: white,
 					shadowBlur: 25,
