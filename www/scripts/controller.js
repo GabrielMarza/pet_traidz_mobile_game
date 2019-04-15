@@ -17,67 +17,66 @@ var app = function (app) {
 		const hs = new HotSpots([
 			{ // pageIntro logo.
 				page:v.pageIntro,
-				// rect:[0, 0, 100, 100],
 				rect:v.pageIntro.logo,
 				call: function () {zog("clicking on hotspot for pageIntro.")}
 			},
+			// { // pageIntro tabs.
+			// 	page:v.pageIntro,
+			// 	rect:v.pageIntro.tabs.buttons[0],
+			// 	call: function () {v.pages.go(v.pageChoosePet, "right");}
+			// },
 			{ // pageIntro tabs.
 				page:v.pageIntro,
-				// rect:[0, 0, 100, 100],
 				rect:v.pageIntro.tabs.buttons[0],
-				call: function () {v.pages.go(v.pageChoosePet, "right");}
+				call: function () {v.pages.go(v.petScreen, "right");}
 			},
 			{ // pageIntro tabs.
 				page:v.pageIntro,
-				// rect:[0, 0, 100, 100],
 				rect:v.pageIntro.tabs.buttons[1],
 				call: function () {v.pages.go(v.aboutTheGame, "down");}
 			},
 			{ // aboutTheGame logo.
 				page:v.aboutTheGame,
-				// rect:[0, 0, 100, 100],
 				rect:v.aboutTheGame.logo,
 				call: function () {zog("clicking on hotspot for aboutTheGame.")}
 			},
+			// { // aboutTheGame tabs.
+			// 	page:v.aboutTheGame,
+			// 	rect:v.aboutTheGame.tabs.buttons[0],
+			// 	call: function () {v.pages.go(v.pageChoosePet, "right");}
+			// },
 			{ // aboutTheGame tabs.
 				page:v.aboutTheGame,
-				// rect:[0, 0, 100, 100],
 				rect:v.aboutTheGame.tabs.buttons[0],
-				call: function () {v.pages.go(v.pageChoosePet, "right");}
+				call: function () {v.pages.go(v.petScreen, "right");}
 			},
 			{ // aboutTheGame tabs.
 				page:v.aboutTheGame,
-				// rect:[0, 0, 100, 100],
 				rect:v.aboutTheGame.tabs.buttons[1],
 				call: function () {v.pages.go(v.pageIntro, "up");}
 			},
 			{ // pageChoosePet logo.
 				page:v.pageChoosePet,
-				// rect:[0, 0, 100, 100],
 				rect:v.pageChoosePet.logo,
 				call: function () {zog("clicking on hotspot for pageChoosePet.")}
 			},
 			{ // pageChoosePet tabs.
 				page:v.pageChoosePet,
-				// rect:[0, 0, 100, 100],
 				rect:v.pageChoosePet.tabs.buttons[0],
 				call: function () {v.pages.go(v.petScreen, "right");}
 			},
 			{ // pageChoosePet tabs.
 				page:v.pageChoosePet,
-				// rect:[0, 0, 100, 100],
 				rect:v.pageChoosePet.tabs.buttons[1],
 				call: function () {v.pages.go(v.pageIntro, "left");}
 			},
 			{ // pageChoosePet logo.
 				page:v.pageChoosePet,
-				// rect:[0, 0, 100, 100],
 				rect:v.pageChoosePet.logo,
 				call: function () {zog("clicking on hotspot for pageChoosePet.")}
 			},
 			{ // petScreen tabs.
 				page:v.petScreen,
-				// rect:[0, 0, 100, 100],
 				rect:v.petScreen.tabs.buttons[0],
 				call: function () {v.pages.go(v.pageIntro, "left");}
 			}

@@ -152,6 +152,14 @@ var app = function(app) {  // module pattern
 		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
 
 		content = new Container(300, 300).addTo(petScreen);
+		// MAKE SCORE LABEL
+		var scoreLabel = new Label({
+			text:0,
+			size:50,
+			align:"right",
+			color:white,
+			backgroundColor:blue
+		}).addTo(petScreen)
 
 		footer = v.petScreen.tabs = new Tabs({
 			tabs:[
@@ -179,9 +187,11 @@ var app = function(app) {  // module pattern
 		// Swiper...
 		manager.add(
 			v.pages = new Pages([
-				{page:pageIntro, swipe:[null, null, pageChoosePet, pageChoosePet]},
+				// {page:pageIntro, swipe:[null, null, pageChoosePet, pageChoosePet]},
+				{page:pageIntro, swipe:[null, null, petScreen, petScreen]},
 				{page:pageIntro, swipe:[null, null, aboutTheGame, aboutTheGame]},
-				{page:aboutTheGame, swipe:[null, null, pageChoosePet, pageChoosePet]},
+				// {page:aboutTheGame, swipe:[null, null, pageChoosePet, pageChoosePet]},
+				{page:aboutTheGame, swipe:[null, null, petScreen, petScreen]},
 				{page:aboutTheGame, swipe:[null, null, pageIntro, pageIntro]},
 				{page:pageChoosePet, swipe:[null, null, pageIntro, pageIntro]},
 				{page:pageChoosePet, swipe:[null, null, petScreen, petScreen]},
