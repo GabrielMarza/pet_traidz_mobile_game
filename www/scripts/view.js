@@ -62,15 +62,16 @@ var app = function(app) {  // module pattern
 				{object:header, maxHeight:90, marginTop:2},
 				{object:content, maxHeight:10, marginTop:2, backgroundColor:blue},
 				{object:footer, maxWidth:90, marginTop:2}
-			], 2, yellow, true, null, stage)
+			], 2, blue, true, null, stage)
 		);
 
 		// About the game page...
 		const aboutTheGame = v.aboutTheGame = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(aboutTheGame);
-		v.aboutTheGame.logo = new Label("About the Game").clone().addTo(header);
+		v.aboutTheGame.logo = frame.asset("aboutthegame.png").clone().sca(0.3).addTo(header);
 
 		content = new Container(300, 300).addTo(aboutTheGame);
+		v.aboutTheGame.text = frame.asset("howtotext.png").clone().sca(1.2).addTo(content).center();
 
 		footer = v.aboutTheGame.tabs = new Tabs({
 			tabs:[
@@ -98,13 +99,13 @@ var app = function(app) {  // module pattern
 				{object:header, maxWidth:90, marginTop:5},
 				{object:content, marginTop:2, backgroundColor:blue},
 				{object:footer, maxWidth:90, marginTop:2}
-			], 2, green, true, null, stage)
+			], 2, blue, true, null, stage)
 		);
 
 		// Choosing a pet page...
 		const pageChoosePet = v.pageChoosePet = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(pageChoosePet);
-		v.pageChoosePet.logo = new Label("Choose Your Pet").clone().addTo(header);
+		v.pageChoosePet.logo = frame.asset("chooseyourpet.png").clone().sca(0.3).addTo(header);
 
 		content = new Container(300, 300).addTo(pageChoosePet);
 		v.petSelector = new Window({backgroundColor:blue, shadowBlur:0, height:300, width:1000, interactive:false, padding:0, slideDamp:.2}).center(content);
@@ -136,24 +137,29 @@ var app = function(app) {  // module pattern
 				{object:header, maxWidth:90, marginTop:5},
 				{object:content, marginTop:2, backgroundColor:blue},
 				{object:footer, maxWidth:90, marginTop:2}
-			], 2, orange, true, null, stage)
+			], 2, blue, true, null, stage)
 		);
 
 		// Pet screen page...
 		const petScreen = v.petScreen = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(petScreen);
-		v.petScreen.logo = frame.asset("petlaughzlogo.png").clone().addTo(header);
-		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
+		v.petScreen.logo = frame.asset("yourownpet.png").clone().sca(0.3).addTo(header);
 
 		content = new Container(300, 300).addTo(petScreen);
+		v.petScreen.pet = frame.asset("tiger_happy.png").clone().sca(0.3).addTo(content).center();
 		// MAKE SCORE LABEL
 		var scoreLabel = new Label({
-			text:0,
+			text:m.data,
 			size:50,
-			align:"right",
+			align:"left",
 			color:white,
 			backgroundColor:blue
-		}).addTo(petScreen)
+		}).addTo(petScreen).sca(2)
+		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
+		// let score = 0;
+		// let petEvent = pet.on("mousedown", (e)=>{
+		// 	scoreLabel.text = ++score;
+		// });
 
 		footer = v.petScreen.tabs = new Tabs({
 			tabs:[
@@ -175,7 +181,7 @@ var app = function(app) {  // module pattern
 				{object:header, maxHeight:90, marginTop:2},
 				{object:content, marginTop:2, backgroundColor:blue},
 				{object:footer, maxWidth:90, marginTop:2}
-			], 2, purple, true, null, stage)
+			], 2, blue, true, null, stage)
 		);
 
 		// Swiper...
