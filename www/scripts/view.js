@@ -3,13 +3,6 @@ var app = function(app) {  // module pattern
 		var stageW = stage.width;
 		var stageH = stage.height;
 
-		frame.on("complete", function () {
-			var aboutLogo = frame.asset("aboutthegame.png");
-			var chooseYourPetLogo = frame.asset("chooseyourpet.png");
-			// var petlaughzlogo = frame.asset("petlaughzlogo.png");
-			stage.update();
-		});
-
 		const v = {};
 
 		STYLE = {
@@ -36,7 +29,7 @@ var app = function(app) {  // module pattern
 		// Intro page...
 		const pageIntro = v.pageIntro = new Container(stageW, stageH).addTo();
 		let header = new Container().addTo(pageIntro);
-		v.pageIntro.logo = frame.asset("petlaughzlogo.png").addTo(header);
+		v.pageIntro.logo = frame.asset("petlaughzlogo.png").clone().addTo(header);
 
 		let content = new Container(300, 300).addTo(pageIntro);
 		// v.dial = new Dial().center(content);
@@ -61,6 +54,7 @@ var app = function(app) {  // module pattern
 			],
 			vertical:true
 		}).addTo(pageIntro);
+		zog(header, content, footer);
 
 		// Intro layout manager...
 		manager.add(
@@ -74,7 +68,7 @@ var app = function(app) {  // module pattern
 		// About the game page...
 		const aboutTheGame = v.aboutTheGame = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(aboutTheGame);
-		v.aboutTheGame.logo = new Label("About the Game").addTo(header);
+		v.aboutTheGame.logo = new Label("About the Game").clone().addTo(header);
 
 		content = new Container(300, 300).addTo(aboutTheGame);
 
@@ -110,7 +104,7 @@ var app = function(app) {  // module pattern
 		// Choosing a pet page...
 		const pageChoosePet = v.pageChoosePet = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(pageChoosePet);
-		v.pageChoosePet.logo = new Label("Choose Your Pet").addTo(header);
+		v.pageChoosePet.logo = new Label("Choose Your Pet").clone().addTo(header);
 
 		content = new Container(300, 300).addTo(pageChoosePet);
 		v.petSelector = new Window({backgroundColor:blue, shadowBlur:0, height:300, width:1000, interactive:false, padding:0, slideDamp:.2}).center(content);
@@ -148,7 +142,7 @@ var app = function(app) {  // module pattern
 		// Pet screen page...
 		const petScreen = v.petScreen = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(petScreen);
-		v.petScreen.logo = frame.asset("petlaughzlogo.png").addTo(header);
+		v.petScreen.logo = frame.asset("petlaughzlogo.png").clone().addTo(header);
 		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
 
 		content = new Container(300, 300).addTo(petScreen);
