@@ -45,7 +45,7 @@ var app = function(app) {  // module pattern
 		let footer = v.pageIntro.tabs = new Tabs({
 			tabs:[
 				new Button({
-					label:"Choose Your Pet",
+					label:"Start Laughing",
 					width:350,
 					borderColor: white,
 					shadowBlur: 25,
@@ -81,7 +81,7 @@ var app = function(app) {  // module pattern
 		footer = v.aboutTheGame.tabs = new Tabs({
 			tabs:[
 				new Button({
-					label:"Choose Your Pet",
+					label:"Start Laughing",
 					width:350,
 					borderColor: white,
 					shadowBlur: 25,
