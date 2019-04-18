@@ -157,9 +157,10 @@ var app = function(app) {  // module pattern
 		}).addTo(petScreen).sca(2)
 		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
 		// let score = 0;
-		// let petEvent = pet.on("mousedown", (e)=>{
-		// 	scoreLabel.text = ++score;
-		// });
+		let petEvent = v.petScreen.pet.on("mousedown", (e) => {
+			// scoreLabel.text = ++score;
+			content.animate();
+		});
 
 		footer = v.petScreen.tabs = new Tabs({
 			tabs:[
