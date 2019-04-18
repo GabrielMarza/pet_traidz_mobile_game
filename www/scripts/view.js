@@ -146,7 +146,7 @@ var app = function(app) {  // module pattern
 		v.petScreen.logo = frame.asset("yourownpet.png").clone().sca(0.3).addTo(header);
 
 		content = new Container(300, 300).addTo(petScreen);
-		v.petScreen.pet = frame.asset("tiger_happy.png").clone().sca(0.3).addTo(content).center();
+		v.petScreen.pet = frame.asset("tiger_happy.png").clone().sca(0.3).addTo(content).centerReg();
 		// MAKE SCORE LABEL
 		var scoreLabel = new Label({
 			text:m.data,
@@ -158,8 +158,9 @@ var app = function(app) {  // module pattern
 		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
 		// let score = 0;
 		let petEvent = v.petScreen.pet.on("mousedown", (e) => {
-			// scoreLabel.text = ++score;
-			content.animate();
+			scoreLabel.text = ++scoreLabel;
+			zog("clicking on pet");
+			v.petScreen.pet.animate({props:{scale:.2}, time:65, loop:false, loopCount:3, rewind:true, from:false});
 		});
 
 		footer = v.petScreen.tabs = new Tabs({
