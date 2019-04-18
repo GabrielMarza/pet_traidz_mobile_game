@@ -79,6 +79,11 @@ var app = function (app) {
 				page:v.petScreen,
 				rect:v.petScreen.tabs.buttons[0],
 				call: function () {v.pages.go(v.pageIntro, "left");}
+			},
+			{ // petScreen tabs.
+				page:v.petScreen,
+				rect:v.petScreen.tabs.buttons[1],
+				call: function () {localStorage.clear(); document.location.reload(true);}
 			}
 		]);
 		hs.show();

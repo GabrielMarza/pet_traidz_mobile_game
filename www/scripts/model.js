@@ -14,18 +14,18 @@ var app = function(app) { // module pattern
 		// Does localStorage exist? and do we have any data stored.
 		// It's a JSON string, so now we need to parse it.
 		if (localStorage && localStorage.exampleData) {
-			m.data = JSON.parse(localStorage.exampleData);
+			m.score = JSON.parse(localStorage.exampleData);
 		} else {
 			// Store whatever the slider and dial are saying onto the user's device.
 			// [dial, slider]
-			m.data = [0, 0];
+			m.score = 0;
 		};
 
 		// Update data, then stringify it and store it.
 		// stringifying it will put "" around it and turn it into a readable string.
 		m.updateData = () => {
 			zog("updating!");
-			localStorage.exampleData = JSON.stringify(m.data);
+			localStorage.exampleData = JSON.stringify(m.score);
 		};
 
 		// We need the "m" outside the function scope, so we return "m".

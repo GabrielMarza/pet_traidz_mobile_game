@@ -109,7 +109,6 @@ var app = function(app) {  // module pattern
 
 		content = new Container(300, 300).addTo(pageChoosePet);
 		v.petSelector = new Window({backgroundColor:blue, shadowBlur:0, height:300, width:1000, interactive:false, padding:0, slideDamp:.2}).center(content);
-		v.petSelector.currentValue = m.data[0];
 
 		footer = v.pageChoosePet.tabs = new Tabs({
 			tabs:[
@@ -148,17 +147,19 @@ var app = function(app) {  // module pattern
 		content = new Container(300, 300).addTo(petScreen);
 		v.petScreen.pet = frame.asset("tiger_happy.png").clone().sca(0.3).addTo(content).centerReg();
 		// MAKE SCORE LABEL
-		var scoreLabel = new Label({
-			text:m.data,
+		var scoreLabel = new Scorer({
+			score:m.score,
 			size:50,
 			align:"left",
 			color:white,
-			backgroundColor:blue
+			backgroundColor:blue,
+			isometric:null
 		}).addTo(petScreen).sca(2)
-		// var score = new Score({score:m.data, backroundColor:yellow, color:black, isometric:null}).addTo(header);
 		// let score = 0;
 		let petEvent = v.petScreen.pet.on("mousedown", (e) => {
-			scoreLabel.text = ++scoreLabel;
+			scoreLabel.text = ++m.score;
+			// m.data = score;
+			m.updateData();
 			zog("clicking on pet");
 			v.petScreen.pet.animate({props:{scale:.2}, time:65, loop:false, loopCount:3, rewind:true, from:false});
 		});
@@ -167,6 +168,13 @@ var app = function(app) {  // module pattern
 			tabs:[
 				new Button({
 					label:"Back to Home",
+					width:350,
+					borderColor: white,
+					shadowBlur: 25,
+					borderWidth: 2
+				}),
+				new Button({
+					label:"Clear Score",
 					width:350,
 					borderColor: white,
 					shadowBlur: 25,
