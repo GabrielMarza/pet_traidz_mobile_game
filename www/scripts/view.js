@@ -143,7 +143,16 @@ var app = function(app) {  // module pattern
 		const petScreen = v.petScreen = new Container(stageW, stageH).addTo();
 		header = new Container().addTo(petScreen);
 		v.petScreen.logo = frame.asset("yourownpet.png").clone().sca(0.3).addTo(header);
-
+		var petHearts = new Emitter({
+			obj:frame.asset("heart.png"),
+			interval:10,
+			life:1200,
+			decayTime:500,
+			sinkForce:.5,
+			gravity:0,
+			force:5,
+			startPaused:true
+		}).centerReg(petScreen);
 		content = new Container(300, 300).addTo(petScreen);
 		v.petScreen.pet = frame.asset("tiger_happy.png").clone().sca(0.3).addTo(content).centerReg();
 		// MAKE SCORE LABEL
@@ -154,7 +163,7 @@ var app = function(app) {  // module pattern
 			color:white,
 			backgroundColor:blue,
 			isometric:null
-		}).addTo(petScreen).sca(2)
+		}).addTo(petScreen).sca(2).bot();
 		// let score = 0;
 		let petEvent = v.petScreen.pet.on("mousedown", (e) => {
 			scoreLabel.text = ++m.score;
@@ -162,6 +171,8 @@ var app = function(app) {  // module pattern
 			m.updateData();
 			zog("clicking on pet");
 			v.petScreen.pet.animate({props:{scale:.2}, time:65, loop:false, loopCount:3, rewind:true, from:false});
+			petSound = frame.asset("clown-horn.mp3").play({volume:.5, loop:false});
+			petHearts.spurt(25)
 		});
 
 		footer = v.petScreen.tabs = new Tabs({
